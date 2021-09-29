@@ -7,7 +7,7 @@ import os
 
 load_dotenv(find_dotenv())
 
-from resources.user import UserRegister
+from resources.user import UserRegister, UserLogin
 
 app = Flask(__name__)
 
@@ -24,6 +24,7 @@ def create_tables():
     db.create_all()
 
 api.add_resource(UserRegister, '/register')
+api.add_resource(UserLogin, '/login')
 
 
 if __name__ == '__main__':
