@@ -52,7 +52,6 @@ class UserLogin(Resource):
         
         user = UserModel.find_by_username(data['username'])
         
-        password = data['password']
 
-        if bcrypt.checkpw(password.encode('utf-8'), user.password_hash):
+        if bcrypt.checkpw(data['password'].encode(), user.password_hash):
             return {"message": "Welcome"}

@@ -5,7 +5,7 @@ class UserModel(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80)) 
-    password_hash = db.Column(db.String(255))
+    password_hash = db.Column(db.LargeBinary)
 
 
     def __init__(self, username, password_hash):
