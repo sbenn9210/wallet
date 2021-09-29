@@ -30,28 +30,3 @@ class UserRegister(Resource):
         user.save_to_db()
 
         return {"message": "User created successfully."}, 201
-
-
-class UserLogin(Resource):
-    TABLE_NAME = 'user'
-
-    parser = reqparse.RequestParser()
-    parser.add_argument('username',
-                        type=str,
-                        required=True,
-                        help="This field cannot be left blank!"
-                        )
-    parser.add_argument('password',
-                        type=str,
-                        required=True,
-                        help="This field cannot be left blank!"
-                        )
-
-    def post(self):
-        data = UserLogin.parser.parse_args()
-        
-        user = UserModel.find_by_username(data['username'])
-        
-
-        if bcrypt.checkpw(data['password'].encode(), user.password_hash):
-            return {"message": "Welcome"}
