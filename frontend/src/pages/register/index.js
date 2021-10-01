@@ -17,14 +17,16 @@ const theme = createTheme();
 export default function Register() {
   const handleSubmit = (event) => {
     event.preventDefault();
+
     const data = new FormData(event.currentTarget);
+
     axios
       .post("/register", {
         username: data.get("username"),
         password: data.get("password"),
       })
-      .then(function (response) {
-        console.log(response);
+      .then(function ({ data }) {
+        console.log(data);
       })
       .catch(function (error) {
         console.log(error);

@@ -3,7 +3,6 @@ from flask_restful import Api
 from db import db 
 from dotenv import load_dotenv, find_dotenv
 from flask_jwt_extended import JWTManager
-from security import authenticate, identity
 from resources.user import UserRegister, UserLogin
 import os
 
