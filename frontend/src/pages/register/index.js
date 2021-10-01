@@ -11,6 +11,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
+import history from "../../utils/history";
 
 const theme = createTheme();
 
@@ -25,10 +26,11 @@ export default function Register() {
         username: data.get("username"),
         password: data.get("password"),
       })
-      .then(function ({ data }) {
-        console.log(data);
+      .then(({ data }) => {
+        localStorage.setItem("access-token", data.access_token);
+        history.push("/");
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error);
       });
   };
